@@ -5,11 +5,11 @@
             <th>Author</th>
             <th>Title</th>
             <th>Category</th>
-            <th>Status</th>
+            <th>Date</th>
             <th>Image</th>
             <th>Tags</th>
             <th>Comments</th>
-            <th>Date</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -40,11 +40,17 @@
                 echo "<td>$cat_title</td>";
             }
             //echo "<td>$post_category_id</td>";
-            echo "<td>$post_status</td>";
             echo "<td><img width='100' src='../images/$post_image'></td>";
             echo "<td>$post_tags</td>";
             echo "<td>$post_comment_count</td>";
             echo "<td>$post_date</td>";
+            echo "<td>$post_status</td>";       
+            if ($post_status == "published")
+                echo "<td><a href='posts.php?state=draft&p_id=$post_id'>Draft it</a></td>";
+            else 
+                echo "<td><a href='posts.php?state=published&p_id=$post_id'>Published it</a></td>";
+
+
             echo "<td><a href='posts.php?source=edit_post&p_id=$post_id'>Edit</a></td>";
             echo "<td><a href='posts.php?delete=$post_id'>Delete</a></td>";
             echo "</tr>";
@@ -54,6 +60,16 @@
             $post_id = $_GET['delete'];
             $query = "DElETE FROM posts WHERE post_id = $post_id";
             $delQuery = mysqli_query($connection, $query);
+            header('Location: posts.php');
+        }
+        if ( isset($_GET['state']) ) {
+            $post_id = $_GET['p_id'];
+            if ($_GET['state'] == 'published') {
+                $query = "UPDATE posts SET post_category_id = $post_category_id, post_title = '$post_title', post_status = 'published', post_author = '$post_author', post_image = '$post_image', post_content = '$post_content', post_tags = '$post_tags', post_date = now(), post_comment_count = $post_comment_count WHERE post_id = $post_id";
+            } else {
+                $query = "UPDATE posts SET post_category_id = $post_category_id, post_title = '$post_title', post_status = 'draft', post_author = '$post_author', post_image = '$post_image', post_content = '$post_content', post_tags = '$post_tags', post_date = now(), post_comment_count = $post_comment_count WHERE post_id = $post_id";
+            }
+            mysqli_query($connection, $query);
             header('Location: posts.php');
         }
 

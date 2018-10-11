@@ -1,4 +1,3 @@
-
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,8 +22,8 @@
                         }
                     ?>
                     <li>
-                        <a href="admin">
-                            Admin
+                        <a href="register.php">
+                            Register
                         </a>
                     </li>
                 </ul>

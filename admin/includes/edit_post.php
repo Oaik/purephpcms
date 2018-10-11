@@ -74,7 +74,7 @@ if(isset($_GET['p_id'])) {
 
 <div class="form-group">
     <label for="post_content">post_content</label>
-    <textarea name="post_content" class="form-control"><?php echo $post_content; ?></textarea>
+    <textarea name="post_content" class="form-control" id="editor"><?php echo $post_content; ?></textarea>
 </div>
 
 <div class="form-group"><input type="submit" class="btn btn-primary" value="publish post" name="edit_post"></div>

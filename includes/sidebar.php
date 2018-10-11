@@ -20,7 +20,7 @@
 
 
     <div class="well">
-        <h4>Blog Search</h4>
+        <h4>Log In</h4>
         <form action="includes/login.php" method="post">
         <div class="form-group">
             <input name="username" type="text" class="form-control" placeholder="enter your username">
@@ -28,7 +28,7 @@
         <div class="input-group">
             <input name="password" type="password" class="form-control" placeholder="enter your password">
             <span class="input-group-btn">
-                <button class="btn btn-primary" name="login" type="submit">Submit</button>
+                <button class="btn btn-primary" name="login" type="submit">Log In</button>
             </span>
         </div>
         </form>

@@ -18,6 +18,7 @@
 
         $adder_post = mysqli_query($connection, $query);
         confirmQuery($adder_post);
+        header("Location: posts.php");
     }
 
 ?>
